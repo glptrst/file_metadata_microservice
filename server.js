@@ -29,7 +29,11 @@ const server = http.createServer((req, res) => {
 	}
     } else if (req.method === 'POST') {
 	if (req.url === '/get-file-size') {
-	    //TODO
+	    res.statusCode = 200;
+	    res.setHeader('Content-Type', 'application/json');
+	    res.end(JSON.stringify({size: req.headers['content-length']}));
+	    //The content lenght in the header is slightly larger than the actual file size.
+	    //Why?
 	} else {
 	    res.statusCode = 404;
 	    res.end(`Cannot ${req.method} ${req.url}`);
