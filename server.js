@@ -12,7 +12,6 @@ const server = http.createServer((req, res) => {
     });
     if (req.method === 'GET') {
 	if (req.url === '/') {
-	    res.statusCode = 200;
 	    fs.readFile('./public/index.html', (err, fileContent) => {
 		if (err) {
 		    console.error(err);
